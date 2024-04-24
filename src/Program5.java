@@ -5,22 +5,20 @@ public class Program5 {
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the input");
         int n=scanner.nextInt();
-        int front=0;
-        int last=n;
-        int [][]arr=new int[100][100];
-        while(n>0){
-            for(int i=front;i<last;i++){
-                for(int j=front;j<last;j++){
-                    if(i==front || j==front || i==last || j==last){
-                        if(n%2!=0){
-                            //System.out.print("1"+" ");
-                            arr[i][j]=1;
-                        }
-                    }
-
-                }n--;
-                front++; last--;
+        int[][] arr = new int[n][n];
+        int front = 0;
+        int last = n-1;
+        int number = 0;
+        while(front <= last){
+            number = number == 0 ? 1 : 0;
+            for(int i = front ; i <= last ; i++){
+                arr[front][i] = number;
+                arr[last][i] = number;
+                arr[i][front] = number;
+                arr[i][last] = number;
             }
+            front++;
+            last--;
         }
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
